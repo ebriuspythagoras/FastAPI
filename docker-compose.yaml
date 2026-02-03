@@ -1,0 +1,13 @@
+services:
+  documentation:
+    image: squidfunk/mkdocs-material:9.5.18
+    container_name: mkdocs
+    working_dir: /docs
+    ports:
+      - "8010:8000"
+    volumes:
+      - ./documentation:/docs
+    environment:
+      - WATCHDOG_USE_POLLING=true
+      - WATCHDOG_POLLING_INTERVAL=1
+    command: ["serve", "-a", "0.0.0.0:8000", "--livereload", "--dirtyreload", "-w", "docs", "-w", "mkdocs.yml"]
