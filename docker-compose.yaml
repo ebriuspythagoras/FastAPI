@@ -6,12 +6,9 @@ x-service-backend-common: &service-backend-common
   env_file:
     - .env
   volumes:
-    - ./backend/app:/app
+    - ./backend:/app/backend
   working_dir: /app
-  command: |
-    sh -c "
-    uvicorn main:app --port=12321 --host=0.0.0.0 --reload
-    "
+  command: sh -c "uvicorn backend.app.main:app --host 0.0.0.0 --port 12321 --reload"
   networks:
     - main_network
 
