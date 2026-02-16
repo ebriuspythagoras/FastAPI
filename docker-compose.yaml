@@ -8,7 +8,7 @@ x-service-backend-common: &service-backend-common
   volumes:
     - ./backend:/app/backend
   working_dir: /app
-  command: sh -c "uvicorn backend.app.main:app --host 0.0.0.0 --port 12321 --reload"
+  command: sh -c alembic upgrade head uvicorn backend.app.main:app --host 0.0.0.0 --port 12321 --reload
   networks:
     - main_network
 
